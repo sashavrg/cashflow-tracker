@@ -1,0 +1,46 @@
+# docker-compose.yml
+services:
+  cash-flow-tracker:
+    image: ghcr.io/yourusername/cash-flow-tracker:latest
+    # Alternative: use Docker Hub
+    # image: yourusername/cash-flow-tracker:latest
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    container_name: cash-flow-tracker
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.cash-flow.rule=Host(`your-domain.com`)"
+    #   - "traefik.http.routers.cash-flow.tls=true"
+    #   - "traefik.http.routers.cash-flow.tls.certresolver=letsencrypt"
+    #   - "traefik.http.services.cash-flow.loadbalancer.server.port=80"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    security_opt:
+      - no-new-privileges:true
+
+---
+
+# If you want to build and push the image yourself, use this build configuration:
+# Uncomment the section below and comment out the image: line above
+
+# services:
+#   cash-flow-tracker:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#       platforms:
+#         - linux/amd64
+#         - linux/arm64
+#     ports:
+#       - "3000:80"
+#     restart: unless-stopped
+#     container_name: cash-flow-tracker

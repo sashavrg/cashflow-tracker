@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom component classes */
+@layer components {
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 hover-scale transition-all-300;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors touch-friendly;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors touch-friendly;
+  }
+  
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors touch-friendly;
+  }
+  
+  .progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-3 overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full transition-all-300 rounded-full;
+  }
+  
+  .progress-green {
+    @apply bg-green-500;
+  }
+  
+  .progress-yellow {
+    @apply bg-yellow-500;
+  }
+  
+  .progress-red {
+    @apply bg-red-500;
+  }
+  
+  .tab-button {
+    @apply flex-1 py-3 px-4 text-center font-medium transition-colors touch-friendly;
+  }
+  
+  .tab-active {
+    @apply bg-white text-blue-600 shadow-sm;
+  }
+  
+  .tab-inactive {
+    @apply text-gray-600 hover:text-gray-800;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-friendly;
+  }
+  
+  .stat-card {
+    @apply bg-white rounded-lg shadow-sm p-4 hover-scale transition-all-300;
+  }
+}
